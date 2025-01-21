@@ -5,9 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace PetManager {
-    public class Person {
-        public Person() {
+namespace PetManager
+{
+    public class Person
+    {
+        public Person()
+        {
             this.Pets = new BindingList<Pet>();
         }
         public string Lastname { get; set; }
@@ -16,10 +19,11 @@ namespace PetManager {
         public BindingList<Pet> Pets { get; private set; }
 
 
-        public static BindingList<Person> GetDemoData() {
+        public static BindingList<Person> GetDemoData()
+        {
             var ret = new BindingList<Person>();
-            var person = new Person() {Lastname = "Müller", Firstname = "Max"};
-            person.Pets.Add(new Pet { Name = "Cäsar", Breed = "Kanarienvogel"});
+            var person = new Person() { Lastname = "Müller", Firstname = "Max" };
+            person.Pets.Add(new Pet { Name = "Cäsar", Breed = "Kanarienvogel" });
             person.Pets.Add(new Pet { Name = "Bello", Breed = "Hund" });
             ret.Add(person);
 
@@ -31,13 +35,15 @@ namespace PetManager {
 
             return ret;
         }
-
-        public override bool Equals(object obj) {
-            if (!(obj is Person)) {
+        // Vergleich
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Person))
+            {
                 return object.Equals(obj, this);
             }
 
-            var person = (Person) obj;
+            var person = (Person)obj;
             return string.Equals(this.Lastname, person.Lastname) && string.Equals(this.Firstname, person.Firstname);
         }
     }
